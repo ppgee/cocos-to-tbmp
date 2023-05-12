@@ -1,20 +1,39 @@
-# cocos-to-tbmp
+# taobao-adapter（for versions 2.4.6 to 2.4.10）
 
-## 淘宝适配构建插件（适用于 2.4.6 到 2.4.10）
+中文说明，点击[这里](./README-CN.md)
 
-## 使用说明
+## Using the Plugin
 
-### 使用插件
+1. Download the latest plugin from [here](https://github.com/ppgee/cocos-to-tbmp/releases?q=taobao-adapter&expanded=true) , including `build-templates.zip` and `taobao-builder.zip`
 
-1. 将 `build-templates` 复制到需要构建项目的根目录中
-2. 构建 `taobao-builder`
-3. 将 `taobao-builder/dist/taobao-builder` 文件夹复制到需要构建项目根目录的 `packages` 中
-4. 开始构建Cocos项目，发布平台请选择 `支付宝小游戏`，构建完成后即可运行
+2. Extract `build-templates.zip` and copy it to the root directory of your game project. If `build-templates` is already exists, you can extract `build-templates/alipay` from the downloaded file and replace it with the one in your project. `build-templates` is provided by this plugin.
 
-### 二次开发后使用插件
+3. Extract `taobao-builder.zip` and copy it to `packages` in the root directory of your Cocos project.
 
-待补充
+4. Start building your Cocos project, and select "Alipay Mini Game" as the publishing platform. You can run the game after the build is completed.
 
-## build-templates 中 main、sub 文件夹有什么作用？
+## Using the Plugin After Secondary Development
 
-当我们游戏包体积大于淘宝官方要求时，需要将游戏包进行分包，而在淘宝开发者工具中，使用分包功能会使开发者工具无法正常显示游戏，所以在开发过程中，请使用 `main` 文件夹里面的文件覆盖对应游戏根目录文件，当需要上传时再使用 `sub`。构建默认使用 `main`
+If you need to modify the plugin, you can take the following steps:
+
+1. Fork this project and clone it to your local machine.
+
+2. Install project dependencies using [pnpm](https://pnpm.io/), and then build the plugin.
+
+3. Copy `build-templates` to the root directory of your game project. If `build-templates` is already exists, directly replace it with `build-templates/alipay` provided by this plugin
+
+4. Copy `dist/taobao-builder` to the packages folder in the root directory of your game project.
+
+5. Start building your Cocos project, and select "Alipay Mini Game" as the publishing platform. You can run the game after the build is completed.
+
+The following commands are used to install dependencies and build the plugin:
+
+```bash
+pnpm install
+
+pnpm build
+```
+
+## What is the purpose of the "main" and "sub" folders in "build-templates"?
+
+When the size of the game package is larger than the official requirements of Taobao, we need to split the game package. However, using the split package function in the Taobao developer tool will prevent the game from being displayed properly. Therefore, during development, please use the files in `main` to replace the corresponding files in the root directory of your game. When uploading, use `sub`. The build process uses `main` by default.
